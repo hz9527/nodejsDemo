@@ -1,4 +1,4 @@
-<!DOCTYPE html5>
+<!DOCTYPE html>
 <html>
   <head>
     <title>my first node js project</title>
@@ -25,6 +25,45 @@
       button:hover{background: #0fa}
       .add,.container{float:left;width:50%;}
       .add>div,.container>div{width:200px;margin:10px auto;text-align: center;}
+      .list{
+        list-style-type:none;
+        padding:0;
+      }
+      .list>li{
+        border-bottom:1px solid #666;
+        text-align:left;
+        margin:5px 0px;
+      }
+      .list>li>.item{
+        float:left;
+        width:50%;
+      }
+      .modal{
+        position:fixed;
+        height:100%;
+        background:rgba(200,200,200,0.3);
+        width:100%;
+        z-index:500;
+        display:none;
+      }
+      .modal>div{
+        width:360px;
+        height:250px;
+        padding:20px;
+        position:absolute;
+        top:50%;left:50%;
+        margin:-120px 0 0 -180px;
+        background:#fff;
+        border-radius:5px;
+        box-sizing:border-box;
+      }
+      .modal>div b{
+        position:absolute;
+        width:20px;
+        height:20px;
+        right:10px;top:10px;
+        font-size:20px;
+      }
     </style>
   </head>
   <body>
@@ -45,6 +84,18 @@
           <ul class='list'>
           </ul>
         </div>
+      </div>
+      <div class="modal">
+        <div>
+          <form id="cform">
+            <b class="close">X</b>
+            <span class="item">name: <input id="cname" type="text"/></span>
+            <span class="item">age: <input id="cage" type="text"/></span>
+            <textarea id="ccomment"></textarea>
+            <button type="submit">save</button>
+          </form>
+        </div>
+
       </div>
       <script src='./index.js'></script>
   </body>
