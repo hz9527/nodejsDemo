@@ -1,3 +1,4 @@
+var uri=location.hostname;
 //small jq
 function $(selector){
   return document.querySelector(selector);
@@ -40,7 +41,7 @@ $('#form').onsubmit=function(e){
     comment:$('#comment').val().trim()
   }
   var xhr=getXHR();
-  xhr.open('POST','http://127.0.0.1:18001/list');
+  xhr.open('POST','http://'+uri+':18001/list');
   xhr.setRequestHeader('Content-Type','application/json');
   xhr.send(JSON.stringify(data));
   xhr.onreadystatechange=function(){
@@ -56,7 +57,7 @@ $('#form').onsubmit=function(e){
 $("#sbtn").onclick=function(){
   var kw=$('#search').val();
   var xhr=getXHR();
-  xhr.open('get','http://127.0.0.1:18001/list?keyword='+kw);
+  xhr.open('get','http://'+uri+':18001/list?keyword='+kw);
   xhr.send(null);
   xhr.onreadystatechange=function(){
     if(xhr.readyState==4&&xhr.status==200){
@@ -100,7 +101,7 @@ $('#cform').onsubmit=function(e){
       }
     }
     var xhr=getXHR();
-    xhr.open('PUT','http://127.0.0.1:18001/list');
+    xhr.open('PUT','http://'+uri+':18001/list');
     xhr.setRequestHeader('Content-Type','application/json');
     xhr.send(JSON.stringify(data));
     xhr.onreadystatechange=function(){
@@ -116,7 +117,7 @@ $('#cform').onsubmit=function(e){
 //delete
 function removeLi(lId){
   var xhr=getXHR();
-  xhr.open('delete','http://127.0.0.1:18001/list');
+  xhr.open('delete','http://'+uri+':18001/list');
   xhr.setRequestHeader('Content-Type','application/json');
   xhr.send(JSON.stringify({"id":lId}));
   xhr.onreadystatechange=function(){
@@ -129,7 +130,7 @@ function removeLi(lId){
 init();
 function init(){
   var xhr=getXHR();
-  xhr.open('get','http://127.0.0.1:18001/list');
+  xhr.open('get','http://'+uri+':18001/list');
   xhr.send(null);
   xhr.onreadystatechange=function(){
     if(xhr.readyState==4&&xhr.status==200){
